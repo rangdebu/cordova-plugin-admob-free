@@ -718,6 +718,13 @@
 
             bf.origin.x = (pr.size.width - bf.size.width) * 0.5f;
 
+            if (!bannerAtTop && !bannerOverlap) {
+                if (@available(iOS 11.0, *)) {
+                    wf.size.height -= self.webView.superview.safeAreaInsets.bottom;
+                    bf.origin.y -= self.webView.superview.safeAreaInsets.bottom;
+                }
+            }
+
             self.bannerView.frame = bf;
 
             //NSLog(@"x,y,w,h = %d,%d,%d,%d", (int) bf.origin.x, (int) bf.origin.y, (int) bf.size.width, (int) bf.size.height );
